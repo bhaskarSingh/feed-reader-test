@@ -40,12 +40,12 @@ $(function() {
         });
 
 
-        /* check if allFeeds object urls are defined/empty or not */
+        /* ensure that allFeeds object urls are not undefined/empty */
         it('has defined urls', function(){
             checkIfAllFeedsObjectsAreDefined('url');
         });
 
-        /* check if allFeeds object name are defined/empty or not */
+        /* ensure that allFeeds object names are not undefined/empty */
         it('has defined names', function(){
         checkIfAllFeedsObjectsAreDefined('name');
         });
@@ -70,18 +70,18 @@ $(function() {
             expect(isMenuHidden).toBe(condition);
         }
 
-        /* check if the menu element is hidden by default or not */
+        /* ensure that menu element is hidden by default */
         it('is hidden by default', function(){
             const isMenuHiddenDefault = $('body').hasClass('menu-hidden');
             expect(isMenuHiddenDefault).toBe(true);
         });
 
-        /* check if the menu element is shown on first click or not */
+        /* ensure that the menu element is shown on first click */
         it('show on first click', function(){
             hideMenuOnClick(false);
         });
 
-        /* check if the menu element hides on second click or not */
+        /* ensure that the menu element hides on second click */
         it('hide on second click', function(){
             hideMenuOnClick(true);
         });
