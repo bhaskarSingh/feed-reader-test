@@ -53,20 +53,37 @@ $(function() {
     });
 
 
-    /* TODO: Write a new test suite named "The menu" */
-
-
-         /* TODO: Write a test that ensures the menu changes
-          * visibility when the menu icon is clicked. This test
-          * should have two expectations: does the menu display when
-          * clicked and does it hide when clicked again.
-          */
+    /* This suite is all about menu navigation sidebar,
+    its default state, what happens when it's clicked */
     describe('The menu', function(){
+
+        /**
+         * @description Test checks whether menu is hidden or shown on clicking a menu icon
+         * @param {boolean} condition --> boolean value true: menu is hidden, false: menu is shown
+         */
+        function hideMenuOnClick(condition){
+            const spyEvent = spyOnEvent('.menu-icon-link', 'click')
+            $('.menu-icon-link').click();
+            expect( 'click' ).toHaveBeenTriggeredOn( '.menu-icon-link' );
+            expect( spyEvent ).toHaveBeenTriggered();
+            const isMenuHidden = $('body').hasClass('menu-hidden');
+            expect(isMenuHidden).toBe(condition);
+        }
 
         /* check if the menu element is hidden by default or not */
         it('is hidden by default', function(){
-            const menuIsHidden = $('body').hasClass('menu-hidden');
-            expect(menuIsHidden).toBe(true);
+            const isMenuHiddenDefault = $('body').hasClass('menu-hidden');
+            expect(isMenuHiddenDefault).toBe(true);
+        });
+
+        /* check if the menu element is shown on first click or not */
+        it('show on first click', function(){
+            hideMenuOnClick(false);
+        });
+
+        /* check if the menu element hides on second click or not */
+        it('hide on second click', function(){
+            hideMenuOnClick(true);
         });
 
     });
