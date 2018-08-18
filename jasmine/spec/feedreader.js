@@ -14,6 +14,19 @@ $(function() {
     * feeds definitions, the allFeeds variable in our application.
     */
     describe('RSS Feeds', function() {
+
+        /**
+         * @description check for allFeed objects key's values
+         * and make sure that it's not empty or undefined
+         * @param {String} key --> allFeeds object key
+         */
+        function checkIfAllFeedsObjectsAreDefined(key){
+            const isAllFeedDefined = allFeeds.filter((item) => {
+                return !(item[key]); // return array if key item is either empty or undefined/null
+            });
+            expect(isAllFeedDefined).toEqual([]);
+         }
+
         /* This is our first test - it tests to make sure that the
          * allFeeds variable has been defined and that it is not
          * empty. Experiment with this before you get started on
@@ -27,16 +40,16 @@ $(function() {
         });
 
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a URL defined
-         * and that the URL is not empty.
-         */
+        /* check if allFeeds object urls are defined/empty or not */
+        it('has defined urls', function(){
+            checkIfAllFeedsObjectsAreDefined('url');
+        });
 
+        /* check if allFeeds object name are defined/empty or not */
+        it('has defined names', function(){
+        checkIfAllFeedsObjectsAreDefined('name');
+        });
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a name defined
-         * and that the name is not empty.
-         */
     });
 
 
