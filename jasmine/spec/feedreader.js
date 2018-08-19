@@ -111,10 +111,35 @@ $(function() {
 
     });
 
-    /* TODO: Write a new test suite named "New Feed Selection" */
+    /* This suite check if feed data changes or not on new feed selection */
+    describe('New Feed Selection', function(){
+        /* Set default timeout interval to 21 seconds from 5
+        seconds so that that Loadfeed can load new feed data successfully  */
+        jasmine.DEFAULT_TIMEOUT_INTERVAL = 21000;
 
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
-         */
+        /* Start loading new feed data */
+        beforeEach(function(done) {
+            /* wait for 10 seconds so that previous feed
+            first item text can be stored for comparision
+            with the new first item text feed data to ensure
+            that new data is loaded succesfully and also so
+            that this test suite can run independently otherwise
+            before text results in undefined incase run without setTimeout */
+            setTimeout(function(){
+                loadFeed(1);
+                done();
+            }, 10000);
+        });
+
+        it('content changes',function(done) {
+            const beforeText = $('.feed').find('.entry')[0].innerText; //old feed first item text
+            /* wait for 10 seconds so that new feed data can load */
+            setTimeout(function(){
+                const afterText = $('.feed').find('.entry')[0].innerText; //new feed first item text
+                expect(beforeText !== afterText).toBe(true);
+                done();
+            }, 10000);
+        });
+
+    });
 }());
