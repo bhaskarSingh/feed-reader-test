@@ -21,10 +21,10 @@ $(function() {
          * @param {String} key --> allFeeds object key
          */
         function checkIfAllFeedsObjectsAreDefined(key){
-            const isAllFeedDefined = allFeeds.filter((item) => {
+            const FILTERED_FEED = allFeeds.filter((item) => {
                 return !(item[key]); // return array if key item is either empty or undefined/null
             });
-            expect(isAllFeedDefined).toEqual([]);
+            expect(FILTERED_FEED).toEqual([]);
          }
 
         /* This is our first test - it tests to make sure that the
@@ -62,18 +62,18 @@ $(function() {
          * @param {boolean} condition --> boolean value true: menu is hidden, false: menu is shown
          */
         function hideMenuOnClick(condition){
-            const spyEvent = spyOnEvent('.menu-icon-link', 'click')
+            const SPY_EVENT = spyOnEvent('.menu-icon-link', 'click')
             $('.menu-icon-link').click();
             expect( 'click' ).toHaveBeenTriggeredOn( '.menu-icon-link' );
-            expect( spyEvent ).toHaveBeenTriggered();
-            const isMenuHidden = $('body').hasClass('menu-hidden');
-            expect(isMenuHidden).toBe(condition);
+            expect( SPY_EVENT ).toHaveBeenTriggered();
+            const IS_MENU_HIDDEN = $('body').hasClass('menu-hidden');
+            expect(IS_MENU_HIDDEN).toBe(condition);
         }
 
         /* ensure that menu element is hidden by default */
         it('is hidden by default', function(){
-            const isMenuHiddenDefault = $('body').hasClass('menu-hidden');
-            expect(isMenuHiddenDefault).toBe(true);
+            const IS_MENU_HIDDEN_BY_DEFAULT = $('body').hasClass('menu-hidden');
+            expect(IS_MENU_HIDDEN_BY_DEFAULT).toBe(true);
         });
 
         /* ensure that the menu element is shown on first click */
@@ -103,9 +103,9 @@ $(function() {
 
         /* ensure that there is atleast one entry */
 		it('has atleast one entry',function(done) {
-            const feedItemLength = $('.feed').find('.entry').length;
-            console.log(feedItemLength);
-            expect(feedItemLength).not.toBeLessThan(1);
+            const FEED_ITEM_LENGTH = $('.feed').find('.entry').length;
+            console.log(FEED_ITEM_LENGTH);
+            expect(FEED_ITEM_LENGTH).not.toBeLessThan(1);
 			done();
 		});
 
@@ -132,11 +132,11 @@ $(function() {
         });
 
         it('content changes',function(done) {
-            const beforeText = $('.feed').find('.entry')[0].innerText; //old feed first item text
+            const BEFORE_TEXT = $('.feed').find('.entry')[0].innerText; //old feed first item text
             /* wait for 10 seconds so that new feed data can load */
             setTimeout(function(){
-                const afterText = $('.feed').find('.entry')[0].innerText; //new feed first item text
-                expect(beforeText !== afterText).toBe(true);
+                const AFTER_TEXT = $('.feed').find('.entry')[0].innerText; //new feed first item text
+                expect(BEFORE_TEXT !== AFTER_TEXT).toBe(true);
                 done();
             }, 10000);
         });
