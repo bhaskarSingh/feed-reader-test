@@ -91,9 +91,7 @@ $(function() {
 
         //Load feed data before running the test
         beforeEach(function(done) {
-            loadFeed(0, function(){
-                done();
-            })
+            loadFeed(0,done);
         });
 
         /* ensure that there is atleast one entry */
