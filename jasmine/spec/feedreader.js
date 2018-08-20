@@ -106,32 +106,23 @@ $(function() {
 
     /* This suite check if feed data changes or not on new feed selection */
     describe('New Feed Selection', function(){
-        /* Set default timeout interval to 21 seconds from 5
-        seconds so that that Loadfeed can load new feed data successfully  */
-        jasmine.DEFAULT_TIMEOUT_INTERVAL = 21000;
+        let BEFORE_TEXT, AFTER_TEXT;
 
-        /* Start loading new feed data */
+        /* First load default feed then new feed and store
+        the respective first item text of the feed for comparison */
         beforeEach(function(done) {
-            /* wait for 10 seconds so that previous feed
-            first item text can be stored for comparision
-            with the new first item text feed data to ensure
-            that new data is loaded succesfully and also so
-            that this test suite can run independently otherwise
-            before text results in undefined incase run without setTimeout */
-            setTimeout(function(){
-                loadFeed(1);
-                done();
-            }, 10000);
+           loadFeed(0, function(){
+                BEFORE_TEXT = $('.feed').find('.entry')[0].innerText; //old feed first item text
+                loadFeed(1, function(){
+                    done();
+                    AFTER_TEXT = $('.feed').find('.entry')[0].innerText; //new feed first item text
+                });
+           });
         });
 
-        it('content changes',function(done) {
-            const BEFORE_TEXT = $('.feed').find('.entry')[0].innerText; //old feed first item text
-            /* wait for 10 seconds so that new feed data can load */
-            setTimeout(function(){
-                const AFTER_TEXT = $('.feed').find('.entry')[0].innerText; //new feed first item text
-                expect(BEFORE_TEXT !== AFTER_TEXT).toBe(true);
-                done();
-            }, 10000);
+        /* ensure feed data changes on new feed selection */
+        it('content changes',function() {
+            expect(BEFORE_TEXT !== AFTER_TEXT).toBe(true);
         });
 
     });
