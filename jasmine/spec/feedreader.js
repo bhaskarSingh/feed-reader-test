@@ -76,13 +76,11 @@ $(function() {
             expect(IS_MENU_HIDDEN_BY_DEFAULT).toBe(true);
         });
 
-        /* ensure that the menu element is shown on first click */
-        it('show on first click', function(){
+        /* ensure that the menu element toggles correctly */
+        it('toggles menu on click', function(){
+            //Show menu on first click
             hideMenuOnClick(false);
-        });
-
-        /* ensure that the menu element hides on second click */
-        it('hide on second click', function(){
+            //Hide menu on second click
             hideMenuOnClick(true);
         });
 
