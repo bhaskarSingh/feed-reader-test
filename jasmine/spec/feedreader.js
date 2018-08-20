@@ -88,23 +88,18 @@ $(function() {
 
     /* This test suite checks if feed by default has atleast one entry or not */
     describe('Initial Entries', function(){
-        /* Set default timeout interval to 11 seconds
-        from 5 seconds so that that feed data can load successfully */
-        jasmine.DEFAULT_TIMEOUT_INTERVAL = 11000;
 
+        //Load feed data before running the test
         beforeEach(function(done) {
-            // Wait for 10 seconds for feed to load data
-            setTimeout(function(){
-			    done();
-            }, 10000);
+            loadFeed(0, function(){
+                done();
+            })
         });
 
         /* ensure that there is atleast one entry */
-		it('has atleast one entry',function(done) {
+		it('has atleast one entry',function() {
             const FEED_ITEM_LENGTH = $('.feed').find('.entry').length;
-            console.log(FEED_ITEM_LENGTH);
             expect(FEED_ITEM_LENGTH).not.toBeLessThan(1);
-			done();
 		});
 
     });
