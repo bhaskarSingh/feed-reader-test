@@ -114,8 +114,8 @@ $(function() {
            loadFeed(0, function(){
                 BEFORE_TEXT = $('.feed').find('.entry')[0].innerText; //old feed first item text
                 loadFeed(1, function(){
-                    done();
                     AFTER_TEXT = $('.feed').find('.entry')[0].innerText; //new feed first item text
+                    done();
                 });
            });
         });
