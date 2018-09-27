@@ -1,6 +1,6 @@
 *,
 *:after,
-*:before: {
+*:before {
     box-sizing: inherit;
 }
 
@@ -20,6 +20,10 @@ a {
     color: #111;
 }
 
+nav {
+    display: inline;
+}
+
 a:hover h2 {
     text-decoration: underline;
 }
@@ -36,7 +40,7 @@ h2 {
 }
 
 .header {
-    background: #4caf50;
+    background: #29602A;
     color: #fff;
     position: fixed;
     top: 0;
@@ -53,7 +57,7 @@ h2 {
     position: absolute;
     top: 3.5em;
     padding: 1em;
-    background: #4caf50;
+    background: #29602A;
     height: 100%;
     width: 10em;
     transform: translate3d(0, 0, 0);
