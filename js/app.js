@@ -130,4 +130,17 @@ $(function() {
     menuIcon.on('click', function() {
         $('body').toggleClass('menu-hidden');
     });
+
+
+    /* Manage nav items off screen content for easier tab navigation */
+    $('.menu-icon-link').click(function() {
+        $('.slide-menu').toggleClass('toggle-list-items');
+    });
+
+    /* Toggle nav item on user keyboard enter */
+    $('.menu-icon-link').keypress(function(e){
+        if(e.which == 13){ //Enter key pressed
+            $('.menu-icon-link').click();
+        }
+    });
 }());

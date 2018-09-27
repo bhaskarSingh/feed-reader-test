@@ -54,6 +54,7 @@ h2 {
 }
 
 .slide-menu {
+    display: block;
     position: absolute;
     top: 3.5em;
     padding: 1em;
@@ -93,4 +94,8 @@ h2 {
     border-bottom: 1px solid #ddd;
     padding: 1em;
     margin: 0.5em 0;
+}
+
+.toggle-list-items {
+    display: none;
 }
