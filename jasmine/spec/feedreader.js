@@ -104,15 +104,15 @@ $(function() {
 
     /* This suite check if feed data changes or not on new feed selection */
     describe('New Feed Selection', function(){
-        let BEFORE_TEXT, AFTER_TEXT;
+        let beforeText, afterText;
 
         /* First load default feed then new feed and store
         the respective first item text of the feed for comparison */
         beforeEach(function(done) {
            loadFeed(0, function(){
-                BEFORE_TEXT = $('.feed').find('.entry')[0].innerText; //old feed first item text
+                beforeText = $('.feed').find('.entry')[0].innerText; //old feed first item text
                 loadFeed(1, function(){
-                    AFTER_TEXT = $('.feed').find('.entry')[0].innerText; //new feed first item text
+                    afterText = $('.feed').find('.entry')[0].innerText; //new feed first item text
                     done();
                 });
            });
@@ -120,7 +120,7 @@ $(function() {
 
         /* ensure feed data changes on new feed selection */
         it('content changes',function() {
-            expect(BEFORE_TEXT !== AFTER_TEXT).toBe(true);
+            expect(beforeText !== afterText).toBe(true);
         });
 
     });
