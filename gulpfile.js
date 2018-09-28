@@ -4,6 +4,7 @@ const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
 const cleanCss = require('gulp-clean-css');
 
+/* copy all the files from app folder to build folder */
 function copy() {
     return gulp.src([
       'app/*.html',
@@ -18,6 +19,7 @@ function copy() {
     .pipe(gulp.dest('build'));
 }
 
+/* local server with live reloading*/
 function serve() {
     return browserSync.init({
       server: 'build',
@@ -26,6 +28,7 @@ function serve() {
     });
 }
 
+/* make js file backward compatible and compress the file too */
 function processJs() {
     return gulp.src(['app/js/*.js'])
     .pipe(babel({
@@ -35,6 +38,7 @@ function processJs() {
     .pipe(gulp.dest(['build/js']));
 }
 
+/* make js file backward compatible and compress the file too */
 function processSpec() {
     return gulp.src(['app/jasmine/spec/*.js'])
     .pipe(babel({
@@ -44,12 +48,14 @@ function processSpec() {
     .pipe(gulp.dest(['build/jasmine/spec']));
 }
 
+/* compress the css files */
 function processCss() {
     return gulp.src('app/css/*.css')
     .pipe(cleanCss())
     .pipe(gulp.dest('build/css'));
 }
 
+/* watch for any changes in the file*/
 function watch(done) {
     gulp.watch('app/css/*.css', processCss);
     gulp.watch('app/jasmine/spec/*.js', processSpec);
@@ -57,6 +63,7 @@ function watch(done) {
     done();
 }
 
+/* run all the tast togther */
 gulp.task(
     'buildAndServe',
     gulp.series(
