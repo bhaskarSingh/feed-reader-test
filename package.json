@@ -1,0 +1,24 @@
+{
+  "name": "feed-reader-test",
+  "version": "1.0.0",
+  "description": "**To run the test open index.html file and wait for around few seconds for tests to get completed and also make sure you have good internet speed while running the test**",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhaskarSingh/feed-reader-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bhaskarSingh/feed-reader-test/issues"
+  },
+  "homepage": "https://github.com/bhaskarSingh/feed-reader-test#readme",
+  "devDependencies": {
+    "browser-sync": "^2.24.7",
+    "gulp": "^4.0.0"
+  }
+}
