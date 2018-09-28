@@ -50,10 +50,17 @@ function processCss() {
     .pipe(gulp.dest('build/css'));
 }
 
+function watch(done) {
+    gulp.watch('app/css/*.css', processCss);
+    gulp.watch('app/jasmine/spec/*.js', processSpec);
+    gulp.watch('app/js/*.js', processJs);
+    done();
+}
+
 gulp.task(
     'buildAndServe',
     gulp.series(
         copy,processJs, processSpec, processCss,
-        serve
+        gulp.parallel(serve, watch)
     )
 );
