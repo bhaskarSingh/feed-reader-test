@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const browserSync = require('browser-sync');
 const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
+const cleanCss = require('gulp-clean-css');
 
 function copy() {
     return gulp.src([
@@ -43,10 +44,16 @@ function processSpec() {
     .pipe(gulp.dest(['build/jasmine/spec']));
 }
 
+function processCss() {
+    return gulp.src('app/css/*.css')
+    .pipe(cleanCss())
+    .pipe(gulp.dest('build/css'));
+}
+
 gulp.task(
     'buildAndServe',
     gulp.series(
-        copy,processJs, processSpec,
+        copy,processJs, processSpec, processCss,
         serve
     )
 );
