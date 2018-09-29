@@ -19,7 +19,7 @@ function copy() {
     .pipe(gulp.dest('build'));
 }
 
-/* local server with live reloading*/
+/* run local server with live reloading*/
 function serve() {
     return browserSync.init({
       server: 'build',
@@ -63,7 +63,7 @@ function watch(done) {
     done();
 }
 
-/* run all the tast togther */
+/* run all the task togther */
 gulp.task(
     'buildAndServe',
     gulp.series(
