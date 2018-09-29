@@ -123,5 +123,11 @@ $(function() {
             expect(beforeText !== afterText).toBe(true);
         });
 
+        /*After checking whether content changes correctly
+         or not, load the default feed */
+        afterEach(function(done){
+            loadFeed(0, done);
+        })
+
     });
 }());
